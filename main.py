@@ -22,15 +22,12 @@ def seasons(tv_show_id):
     total_seasons_number        = queries.get_total_seasons_number(tv_show_id)
     return render_template('seasons.html', seasons = seasons, total_episodes_number = total_episodes_number, total_seasons_number = total_seasons_number )
 
-<<<<<<< HEAD
-=======
-# check it
+
 @app.route('/episodes/<season_id>')
 def episodes(season_id):
     episodes = queries.get_episodes(season_id)
     return render_template('episodes.html', episodes = episodes)
 
->>>>>>> episodes
 
 def main():
     app.run(debug=True)
