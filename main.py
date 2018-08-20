@@ -32,7 +32,7 @@ def episodes(season_id):
 @app.route('/all_actors')
 def all_actors():
     actors_and_shows = queries.get_actors_and_shows()
-    return render_template('all_actors.html', actors_and_shows() = actors_and_shows
+    return render_template('all_actors.html', actors_and_shows = actors_and_shows)
 
 
 
