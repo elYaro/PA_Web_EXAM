@@ -14,3 +14,11 @@ def get_seasons(tv_show_id):
                                             JOIN shows ON seasons.show_id = shows.id
                                             WHERE shows.id = %(id)s
                                             ORDER BY seasons.title;''', {'id' : tv_show_id })
+
+
+def get_total_episodes_number(tv_show_id):
+    return data_manager.execute_select('''  SELECT COUNT(se.title) FROM shows sh
+                                            JOIN seasons se ON sh.id = se.show_id
+                                            JOIN episodes ep ON ep.season_id = se.id
+                                            WHERE sh.id = %(id)s AND se.season_number >0;''', {'id'  : tv_show_id })
+
