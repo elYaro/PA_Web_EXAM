@@ -45,3 +45,73 @@
                 </div>
             </header>
             
+            <section>
+                <nav class="breadcrumb">
+                    <a href="#">{{ episodes[0]['show_title'] }}</a>
+                    <span class="separator">&gt;</span>
+                    <a href="#">{{ episodes[0]['season_title'] }}</a>
+                    <span class="separator">&gt;</span>
+                    <a href="#">total number of episodes: {{ episodes[-1]['episode_number'] }}</a>
+                </nav>
+                <h1 class="title text-center">Episodes Page of {{ episodes[0]['show_title'] }} > {{ episodes[0]['season_title'] }}</h1>
+                <div class="card">
+                    <h2>TV show lovers!</h2>
+                    <p>Below you can find the table presenting all episodes in the selected {{ episodes[0]['season_title'] }} of {{ episodes[0]['show_title'] }} .</p>
+                    <p>Click buttons to edit or delete specific episode.</p>
+                    <br>
+                </div>
+                <div class="card">
+                        Episodes:
+                        <table>
+                            <thead>
+                                <tr>
+        
+                                    <th>Season</th>
+                                    <th>Episode no.</th>
+                                    <th>Episode title</th>
+                                    <th>Overview</th>
+                                    <th class="action-column">Edit</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for episode in episodes %}
+                                <tr>
+                                    <td>{{ episode['season_title'] }}</td>
+                                    <td>{{ episode['episode_number'] }}</td>
+                                    <td>{{ episode['episode_title'] }}</td>
+                                    <td>{{ episode['overview'] }}</td>
+                                    <td class="action-column">
+                                        <button type="button" name="{{ (episode['episode_id'] | string) }}" onclick="editEpisode({{ episode['episode_id'] }})" class="icon-button"><i class="fa fa-edit fa-fw"></i></button>
+                                        <button type="button" name="{{ (episode['episode_id'] | string) }}" onclick="deleteEpisode(this)" class="icon-button"><i class="fa fa-trash fa-fw"></i></button>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+        
+        
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                 
+            </section>
+            <!-- {{ episodes }}<br> -->
+            
+            <footer>
+                Copyright, PA by Yaro
+            </footer>
+        </div>
+        <div class="background">
+            <div class="dark-blue-layer"></div>
+            <div class="light-blue-layer"></div>
+        </div>
+    </body>
+    
+    </html>
