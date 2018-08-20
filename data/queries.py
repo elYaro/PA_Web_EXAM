@@ -33,3 +33,12 @@ def get_episodes(season_id):
                                             JOIN seasons se ON ep.season_id = se.id
                                             JOIN shows sh ON sh.id = se.show_id
                                             WHERE se.id = %(id)s;''', {'id' : season_id })
+
+
+def get_actors_and_shows():
+    return data_manager.execute_select('''  SELECT ac.name, array_agg(sh.title) FROM actors ac
+                                            JOIN show_characters shch ON shch.actor_id = ac.id
+                                            JOIN shows sh ON sh.id = shch.show_id
+                                            GROUP BY ac.name
+                                            ORDER BY ac.name
+                                            LIMIT 20;''')
