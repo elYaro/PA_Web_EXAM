@@ -36,3 +36,12 @@ def get_total_seasons_number(tv_show_id):
                                             JOIN shows sh ON se.show_id = sh.id
                                             WHERE sh.id = %(id)s AND se.season_number >=0;''', {'id'  : tv_show_id })
 
+
+
+def get_actors_and_shows():
+    return data_manager.execute_select('''  SELECT ac.name, array_agg(sh.title) FROM actors ac
+                                            JOIN show_characters shch ON shch.actor_id = ac.id
+                                            JOIN shows sh ON sh.id = shch.show_id
+                                            GROUP BY ac.name
+                                            ORDER BY ac.name
+                                            LIMIT 20;''')
