@@ -44,8 +44,31 @@
                 <button type="button" id="bt_login">Login</button>
             </div>
         </header>
-        
 
+        <section>
+            <nav class="breadcrumb">
+                <a href="#">{{ seasons[0]['tv_show_title'] }}</a>
+                <span class="separator">&gt;</span>
+                <a href="#">total number of seasons (excl. specials): {{ total_seasons_number[-1]['season_number'] }}</a>
+                <span class="separator">&gt;</span>
+                <a href="#">total number of episodes (excl. specials): {{ total_episodes_number[0]['count'] }}</a>
+            </nav>
+            <h1 class="title text-center">Seasons Page of {{ seasons[0]['tv_show_title'] }}</h1>
+            <div class="card">
+                <h2>TV show lovers!</h2>
+                <p>Below you can find the list of all seasons of the TV Serial named: {{ seasons[0]['tv_show_title'] }}.</p>
+                <p>Click on the Season to see more details.</p>
+                <br>
+                <ul>
+                    {% for season in seasons%}
+                    <li> <a href="{{ '/episodes/' + (season['season_id'] | string) }}">{{ season['season_title'] }} </a></li>
+                    {% endfor %}
+                </ul>
+            </div> 
+        </section>
+        <!-- {{ seasons }}<br> -->
+        <!-- {{ total_episodes_number}}<br> -->
+        <!-- {{ total_seasons_number}}<br> -->
         <footer>
             Copyright, PA by Yaro
         </footer>
