@@ -29,10 +29,12 @@ def episodes(season_id):
     return render_template('episodes.html', episodes = episodes)
 
 
+
 @app.route('/all_actors')
 def all_actors():
     actors_and_shows = queries.get_actors_and_shows()
     return render_template('all_actors.html', actors_and_shows = actors_and_shows)
+
 
 
 
@@ -43,4 +45,4 @@ def main():
 if __name__ == '__main__':
     main()
 
-# developer branch created
+
