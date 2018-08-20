@@ -29,6 +29,13 @@ def episodes(season_id):
     return render_template('episodes.html', episodes = episodes)
 
 
+@app.route('/all_actors')
+def all_actors():
+    all actors = queries.get_all_actors()
+    return render_template('all_actors.html', all_actora = all_actors)
+
+
+
 def main():
     app.run(debug=True)
 
